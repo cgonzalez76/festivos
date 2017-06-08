@@ -1,0 +1,90 @@
+timezoneSelector / angular-timezone-selector.js
+PARCHE 20160219 para guardar en la seleccion tambien el valor UTC  
+
+-----------------------------------------------
+
+chosen / select.min.js
+1 PARCHE 20160222 para selecciones multiples ya sea con filtro o sin el se necesitaba que si se pulsaba control-key no se cerrase el lista combo y poder seguir seleccionando
+
+2 PARCHES 20160222 porque lanzaba errores si se pulsaba borrar elementos seleccionados estando abierto el combo listado 
+
+------------------------------------------------
+
+chosen / chosen.jquery.js
+PARCHE 20160223 para no perder la cadena de busqueda ni filtro al seleccionar los resultados pulsaldo control-key
+
+-------------------------------------------------
+
+index.html 
+
+se debió quitar el JS 
+
+Comentar el ng-scrollable tanto css como js  porque en MAC no va bien del todo con la rueda scroll además se prefiere scroll nativo
+addins/ng-scrollable/ng-scrollable.min.css
+addins/ng-scrollable/ng-scrollable.min.js
+
+Se debió quitar el JS responsive porque este JS impide que se puedan hacer selecciones en los drills downs porque este plugin hace lo del drilldown de columnas extras cuando no caben y parece que anula todas las interaccione sdel raton sobre las tablas al añadirse.
+addins/dataTables/dataTables.responsive.min.js
+
+Se deja no obstante la version CSS de este plugin porque si se desea se puede usar en tablas sus estilos.
+
+Importante tambien se han quitado todos los WITH tanto en table, como en STYLE o estilos class y ademas en el plugin de las tablas se pone a false  propiedad .withOption('responsive', false)
+
+
+Quitando todo lo de tabla responsive y los WITH al 100% y como además se deseaba un colresize en las columnas por lo que se emplea el plugin que activa esto en los datetables
+addins/dataTables/dataTables.colResize.js
+y se activa  con la propiedad
+
+.withDOM('Zlfrtip')
+
+
+y si la tabla no es responsive y se usa el plugin colresice activado ademas se debe usar la propiedad  tableWidthFixed a false
+
+         .withOption("colResize",{"exclude":[0], "tableWidthFixed": false})
+		 
+Esto hace que al redimensionar las columnas la tabla crezca en ancho como el comportameinto en excel
+
+NOTA: la propiedad "exclude":[0] es solo para desactivar colresize en la columna del drilldown
+
+queda al final esta inicialización en 
+controllers / reports / ReportsController.js
+donde se decide al cargar datos iniciales tabla padre si tiene drilldown o no para hacer la primera columna ordenable y resaizable o no en el caso de ser el icono de despliegue al llevar drilldown.
+
+Así queda resumido
+
+if(drillDownParentGrid){
+
+                                        $scope.dtColumnDefs = [
+                                            //DTColumnDefBuilder.newColumnDef(0).notSortable().withClass('details-control-parent').withOption('sContentPadding', '0').withOption('width', '5px').withOption('padding', '0')
+                                            DTColumnDefBuilder.newColumnDef(0).withClass('details-drill-center').notSortable().withOption('sContentPadding', '0').withOption('width', '5px').withOption('padding', '0')
+                                        ];
+
+                                        $scope.dtOptions = DTOptionsBuilder.newOptions()
+                                            // .withDOM('C<"clear">lfrtip')
+                                            .withOption('responsive', false)
+                                            .withOption('scroller', false)
+                                            .withOption('bAutoWidth', false)
+                                            .withPaginationType('full_numbers')
+                                            .withDOM('frtip')
+                                            .withDOM('Zlfrtip')
+                                            .withOption("colResize",{"exclude":[0], "tableWidthFixed": false})
+                                            .withOption('order', [1, 'desc'])
+										;
+
+}else{
+
+                                        $scope.dtOptions = DTOptionsBuilder.newOptions()
+                                            // .withDOM('C<"clear">lfrtip')
+                                            .withOption('responsive', false)
+                                            .withOption('scroller', false)
+                                            .withOption('bAutoWidth', false)
+                                            .withPaginationType('full_numbers')
+                                            .withDOM('frtip')
+                                            .withDOM('Zlfrtip')
+                                            .withOption("colResize",{"tableWidthFixed": false})
+                                        ;
+}
+
+
+
+PARCHEADO addins / chart / angular-chart.min.css

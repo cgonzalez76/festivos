@@ -1,0 +1,267 @@
+<!doctype html>
+<html ng-app=festivos>
+<head>
+<base href="/charlesapp/">
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Festivos mundiales</title>
+<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+<!--<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+
+<!-- ANGULAR -->
+<link  href="addins/angular/angular-ui-tree/angular-ui-tree.css" rel="stylesheet">
+<link  href="addins/angular/angular-notify/angular-notify.min.css" rel="stylesheet">
+
+<!-- JQUERY -->
+<link  href="addins/jquery/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+
+<!-- FONT-MATERIAL DESIGN GOOGLE -->
+<link  href="addins/font-materialdesign/css/materialdesignicons.min.css" rel="stylesheet">
+
+<!-- FONT-AWESOME -->
+<link  href="addins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+<!-- SWEETALERT -->
+<link  href="addins/sweetalert/sweetalert.css" rel="stylesheet">
+
+<!-- DATEPICKER -->
+<link  href="addins/datepicker/angular-datepicker.css" rel="stylesheet">
+
+<!-- CHOSEN -->
+<link  href="addins/chosen/css/chosen.css" rel="stylesheet">
+<link rel="stylesheet" href="addins/chosen/css/select.css">
+
+<!-- DATATABLES -->
+<link  href="addins/dataTables/css/dataTables.bootstrap.css" rel="stylesheet">
+<link  href="addins/dataTables/css/responsive.dataTables.min.css" rel="stylesheet">
+
+<!-- DATATABLES:BUTTONS -->
+<link  href="addins/dataTables/buttons/buttons.dataTables.css" rel="stylesheet">
+
+<!-- DATATABLES:BOOTSTRAP -->
+<link  href="addins/dataTables/bootstrap/datatables.bootstrap.css" rel="stylesheet">
+
+<!-- FULL CALENDAR -->
+<link  href="addins/fullcalendar-2.9.1/fullcalendar.css" rel="stylesheet">
+
+<!-- APP CSS Files FOR CHARTS ANGULAR LIB -->
+<link href="addins/chart/angular-chart.min.css" rel="stylesheet">
+
+<!-- APP CSS Files SCROLLABLE -->
+<link href="addins/ng-scrollable/ng-scrollable.min.css" rel="stylesheet">
+
+<!-- CSS FOR CLOCKPICKER   -->
+<link href="addins/clockpicker/bootstrap-clockpicker.min.css" rel="stylesheet">
+
+<!--  ANGULAR CSS TIMEZONE SELECTOR !-->
+<link href="addins/timezoneSelector/angular-timezone-selector.min.css" rel="stylesheet">
+
+<!--  NG-TABLE -->
+<link href="addins/ng-table/ng-table.min.css" rel="stylesheet">
+
+<!-- ############################################################################################################################ -->
+<!-- ### ADDINS ################################################################################################################# -->
+<!-- ############################################################################################################################ -->
+
+<!-- CORE : mantener orden de carga !-->
+<script src="addins/jquery/jquery-2.1.4.min.js"></script>
+<script src="addins/dataTables/jquery.dataTables.js"></script>
+<script src="addins/bootstrap/bootstrap.min.js"></script>
+
+<!-- DATATABLES: COL REORDER permitir cambiar columnas de sitio al  usuario -->
+<script src="addins/dataTables/dataTables.colReorder.js"></script>
+<script src="addins/angular/angular.js"></script>
+<script src="addins/chosen/angular-sanitize.js"></script>
+<script src="addins/dataTables/angular-datatables.min.js"></script>
+
+<!-- esta librer�a impide que se puedan seleccionar textos en los drills downs  -->
+<!-- script src="addins/dataTables/dataTables.responsive.min.js"></script -->
+
+<script src="addins/jquery/jquery-ui.min.js"></script>
+<script src="addins/bootstrap/ui-bootstrap-tpls-0.13.3.min.js"></script>
+<script src="addins/timezoneSelector/lodash.min.js" type="text/javascript"></script>
+<script src="addins/moment/moment-with-locales.js" type="text/javascript"></script>
+<script src="addins/moment/moment-timezone-with-data.min.js" type="text/javascript"></script>
+
+<!--  NG-SCROLL MODULE NG-SCROLLABLE CSS !-->
+<!-- link href="addins/ng-scrollable/ng-scrollable.min.css" rel="stylesheet" -->
+<!--  NG-SCROLL MODULE NG-SCROLLABLE JS !-->
+<!-- script src="addins/ng-scrollable/ng-scrollable.min.js"></script -->
+
+<!-- ANGULAR -->
+<script src="addins/angular/angular-cookies.min.js"></script>
+<script src="addins/angular/angular-storage.js"></script>
+<script src="addins/angular/angular-route.min.js"></script>
+<script src="addins/angular/angular-ui-tree/angular-ui-tree.min.js"></script>
+<script src="addins/angular/angular-notify/angular-notify.min.js"></script>
+<script src="addins/angular/angular-dragdrop/angular-dragdrop.min.js"></script>
+<script src="addins/angular/angular-animate.min.js"></script>
+<script src="addins/angular/angular-md5.min.js"></script>
+<script src="addins/angular/angular-sanitize.min.js"></script>
+<script src="addins/angular/translate/angular-translate.min.js"></script>
+<script src="addins/angular/translate/angular-translate-loader-static-files.min.js"></script>
+
+<!-- SWEETALERT -->
+<script src="addins/sweetalert/sweetalert.min.js"></script>
+
+<!-- JS SCROLLABLE -->
+<script src="addins/ng-scrollable/ng-scrollable.min.js"></script>
+
+<!-- DATEPICKER -->
+<script src="addins/datepicker/angular-datepicker.js"></script>
+
+<!-- CHOSEN -->
+<script src="addins/chosen/chosen.jquery.js"></script>
+<script src="addins/chosen/select.min.js"></script>
+
+<!-- DATATABLES -->
+<script src="addins/dataTables/dataTables.bootstrap.js"></script>
+
+<!-- DATATABLES:BUTTONS-->
+
+<script src="addins/dataTables/buttons/dataTables.buttons.js"></script>
+<script src="addins/dataTables/buttons/angular-datatables.buttons.min.js"></script>
+<script src="addins/dataTables/buttons/buttons.flash.js"></script>
+<script src="addins/dataTables/buttons/buttons.html5.js"></script>
+<script src="addins/dataTables/buttons/buttons.colVis.js"></script>
+<script src="addins/dataTables/buttons/buttons.print.js"></script>
+
+<!-- DATATABLES:SCROLLER-->
+<script src="addins/dataTables/scroller/angular-datatables.scroller.js"></script>
+
+<!-- DATATABLES:BOOTSTRAP-->
+<script src="addins/dataTables/bootstrap/angular-datatables.bootstrap.js"></script>
+
+<!-- FULL CALENDAR -->
+<script src="addins/fullcalendar-2.9.1/fullcalendar.min.js"></script>
+<script src="addins/fullcalendar-2.9.1/lang-all.js"></script>
+
+<!-- DATATABLES:RESIZE COLUMNS-->
+<script src="addins/dataTables/dataTables.colResize.js"></script>
+
+<!-- DATATABLES: COL REORDER ANGULAR PLUGIN permitir cambiar columnas de sitio al  usuario -->
+<script src="addins/dataTables/angular-datatables.colreorder.js"></script>
+
+<!-- ANGULAR CONTEXT MENU -->
+<script src="addins/angularContextMenu/contextMenu.js"></script>
+
+<!-- JS FOR CHARTS BASE  -->
+<script src="addins/chart/Chart.min.js"></script>
+
+<!-- JS FOR CHARTS ANGULAR EXTENSION   -->
+<script src="addins/chart/angular-chart.min.js"></script>
+
+<!-- JS FOR CLOCKPICKER   -->
+<script src="addins/clockpicker/bootstrap-clockpicker.min.js" type="text/javascript" ></script>
+
+<!--  ANGULAR JS TIMEZONE SELECTOR !-->
+<script src="addins/timezoneSelector/angular-timezone-selector.js"></script>
+
+<!--  ANGULAR POPOVERS -->
+<script src="addins/popover/nsPopover.js"></script>
+
+<!--  LINQ -->
+<script src="addins/linq/jquery.linq.min.js"></script>
+
+<!--  NG-TABLE -->
+<script src="addins/ng-table/ng-table.min.js"></script>
+
+<!--  NG-SORTABLE -->
+<script src="addins/sortable/sortable.js"></script>
+<script src="addins/sortable/ng-sortable.js"></script>
+
+<!-- NG-FILE-UPLOAD -->
+<script src="addins/ng-file-upload/ng-file-upload-shim.min.js"></script>
+<script src="addins/ng-file-upload/ng-file-upload.min.js"></script>
+
+<!-- OTHERS -->
+<script src="addins/ie10-viewport-bug-workaround.js"></script><!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="app/controllers/MainController.js"></script>
+<script src="app/app.js"></script>
+
+<style>
+header {
+	background-color: #226A34;
+	border-top: solid 2px #005731;
+	border-bottom: solid 2px #AEC0AE;
+	height: 10vh;
+}
+section {
+	height: 83vh;
+}
+
+#mainview{
+	padding:1vh 3px;
+	background-color:#226A34;	
+}
+
+#main{
+	background-color:#FFF;
+	height:100%;
+	max-height:100%;
+	border-radius:30px;
+	padding:30px;
+}
+footer {
+	background-color: #226A34;
+	border-top: solid 2px #AEC0AE;
+	border-bottom: solid 2px #005731;
+	height: 5vh;
+	color:#FFF;
+	padding:1vh 1%;
+}
+header div {
+	height: 100%;
+}
+.btn, .btn-primary {
+	width:150px;
+	height: 100%;
+	border: 0;
+}
+.btn span {
+	padding: 7px;
+}
+.btn:hover, .btn-primary:focus {
+	background-color: 005731;
+	cursor: pointer;
+}
+
+.glyphicon {
+    font-size: 30px;
+}
+</style>
+</head>
+
+<body>
+<div class="container-fluid" id="main-view">
+	<div class="row">
+		<header class="col-lg-12 col-md-12">
+			<div class="row">
+				<div class="btn-group col-lg-10 col-md-10">
+					<button type="button" class="btn btn-primary active"><i class=" fa-2x fa fa-address-book"></i> Países</button>
+					<button type="button" class="btn btn-primary"><img src="assets/img/spain.png" style="max-height:65%"/>España</button>
+					<button type="button" class="btn btn-primary">Adminsitración</button>
+				</div>
+				<div class="col-lg-2 col-md-2 text-right">
+					<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-user"></span>Mi Usuario</button>
+				</div>
+			</div>
+		</header>
+	</div>
+	<div class="row" id="mainview">
+		<section class="col-lg-12"><!--SECTION-->
+			<div id="main" ng-view> ng-view </div>
+		</section>
+		<!-- FIN SECTION--> 
+	</div>
+	<div class="row"> 
+		<!--FOOTER-->
+		<footer class="col-lg-12"> <small>Enlaces de pie de página</small> </footer>
+		<!-- FIN FOOTER--> 
+	</div>
+</div>
+</body>
+</html>
