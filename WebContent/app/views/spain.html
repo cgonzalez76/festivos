@@ -1,0 +1,100 @@
+<div ng-controller="spainController" ng-init="initializeSpain()" ng-cloak>
+
+	<div  class="col-lg-12" style="margin-top:5px;">
+		<div class="ibox float-e-margins">
+			<div class="ibox-content">
+
+                <div class="modal-body">
+                    <div class="form-group">
+ 						<table style="width:100%">
+ 						<thead></thead>
+ 						<tbody>
+	 						<tr>
+		 						<td style="width:50%; padding:5px;">                        
+			 						<label>Comunidad Autonoma</label>
+									<select allow-single-deselect="true"
+			                                chosen
+			                                ng-model="peticion.ccaa"
+			                                ng-options="x.ccaa for x in comboCCAA" 
+			                                data-placeholder="Selecciona una opcion"
+			                                class="chosen-select"
+			                                ><option disabled></option></select>
+				 				</td>
+		 						<td style="width:50%; padding:5px;">
+			                        <label>Provincia</label>
+									<select allow-single-deselect="true"
+			                                chosen
+			                                ng-model="peticion.provincia"
+			                                ng-options="x.provincia for x in comboProvincias" 
+			                                data-placeholder="Selecciona una opcion"
+			                                class="chosen-select"
+			                                ><option disabled></option></select>
+			 
+		 						</td>
+	 						</tr>
+	 						<tr>
+		 						<td style="width:50%; padding:5px;">                        
+			 						<label>Codigo Postal</label>
+ 		            				<input type="tel" ng-model="peticion.cp" class="form-control" wm-block-length="5" only-digits  wm-block>
+				 				</td>
+		 						<td style="width:50%; padding:5px;">
+			                        <label>Telefono *</label>
+ 		            				<input type="tel" ng-model="peticion.telefono" class="form-control" wm-block-length="9" only-digits  wm-block  >
+			 
+		 						</td>
+	 						</tr>
+  						</tbody>
+ 						</table>
+						<div class="modal-footer">
+		        			<table style="width:100%">
+		 						<thead></thead>
+		 						<tbody>
+			        				<tr>
+			        				<td style="width:80%;text-align: left;"><label>* Precaución: Ceuta comparte prefijo telefónico con Cadiz y Melilla lo comparte con Málaga. No es fiable centrar la busqueda exclusivamente en el teléfono.</label></td>
+			        				<td style="width:20%"><button class="btn btn-lg btn-primary mainColor" ng-click="getFestivos ()" title="Buscar">Buscar</button></td>
+	 								</tr>
+	 							</tbody>
+ 							</table>
+ 						</div>
+                	</div>
+					<div class="hr-line-dashed"></div>
+ 
+ 		            <input type="text" ng-readonly="true" ng-model="festivoHoy.texto" class="form-control" ng-if="festivoHoy.festivo =='True'" >
+
+					<div class="ibox-content" ng-if="respuesta.festivos > 0">
+					    <table id="dataTableFestivos" class="table table-striped table-bordered table-hover dt-responsive dataTables-example"
+					    	datatable="ng"  
+					    	dt-instance="dtInstanceCallback"
+					    	dt-options="dtOptions" 
+					    	dt-column-defs="dtColumnDefs"
+					    	class="row-border hover"
+		                    style="width: 100%;"
+					    >
+					        <thead>
+					        <tr>
+					        	<th class="all"> Fecha</th>
+		                        <th class="all"> Ubicacion</th>
+					            <th class="all"> Nombre</th>
+					            <th class="all"> Tipo</th>
+					        </tr>
+					        </thead>
+		
+					        <tbody>
+					        <tr ng-repeat="record in respuesta.listafestivos">
+		  						<td>{{ formatDate (record.fecha) | date: 'dd-MM-yyyy' }}</td>
+					        	<td><div ng-if="record.ccaa !=null">{{record.ccaa}}</div>
+					        		<div ng-if="record.provincia !=null">{{record.provincia}}</div>
+					        		</td>
+					        	<td>{{record.nombre}}</td>
+					        	<td>{{record.tipo}}</td>
+					        </tr>
+					        </tbody>
+					    </table>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

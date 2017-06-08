@@ -14,5 +14,9 @@ app.controller("MainController",
 				NAV:		'nav'
 				
 		};
+		
+		$scope.openPage=function (pagina) {
+			window.location.href = "/" + pagina;
+		};
 	}
 );

@@ -1,0 +1,61 @@
+<div ng-controller="paisController" ng-init="initializePais()" ng-cloak>
+
+	<div  class="col-lg-12" style="margin-top:5px;">
+		<div class="ibox float-e-margins">
+			<div class="ibox-content">
+
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Pais</label>
+						<select allow-single-deselect="true"
+                                chosen
+                                ng-model="paisSeleccionado"
+                                ng-options="x.pais for x in comboPaises" 
+                                data-placeholder="Selecciona una opcion"
+                                class="chosen-select"
+                                ><option disabled></option></select>
+						<div class="hr-line-dashed"></div>
+						
+                        <input type="text" ng-readonly="true" ng-model="festivoHoy.texto" class="form-control" ng-if="festivoHoy.festivo =='True'" >
+
+					
+						
+                	</div>
+
+			<div class="ibox-content" ng-if="respuesta.festivos > 0">
+			    <table id="dataTableFestivos" class="table table-striped table-bordered table-hover dt-responsive dataTables-example"
+			    	datatable="ng"  
+			    	dt-instance="dtInstanceCallback"
+			    	dt-options="dtOptions" 
+			    	dt-column-defs="dtColumnDefs"
+			    	class="row-border hover"
+                    style="width: 100%;"
+			    >
+			        <thead>
+			        <tr>
+			        	<th class="all"> Fecha</th>
+                        <th class="all"> Dia</th>
+			            <th class="all"> Nombre</th>
+			            <th class="all"> Tipo</th>
+			            <th class="all"> Descripcion</th>
+			        </tr>
+			        </thead>
+
+			        <tbody>
+			        <tr ng-repeat="record in respuesta.listafestivos">
+  						<td>{{ formatDate (record.fecha) | date: 'dd-MM-yyyy' }}</td>
+			        	<td>{{record.dia}}</td>
+			        	<td>{{record.nombre}}</td>
+			        	<td>{{record.tipo}}</td>
+			        	<td><div ng-if = "record.observaciones != 'null'">{{record.observaciones}}</div></td>
+			        </tr>
+			        </tbody>
+			    </table>
+			</div>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

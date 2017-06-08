@@ -3,7 +3,7 @@ var app = angular.module('festivos', [ 'ngRoute', 'ngAnimate', 'ui.bootstrap', '
                                     'ngTable', 'ng-sortable', 'ngFileUpload',
                                     'pascalprecht.translate', 'ngMd5','ui.select','ngSanitize',
                                     'datePicker', 'cgNotify', 'ngScrollable',
-                                    'festivos.Controllers', 
+                                    'festivos.Controllers','festivos.Services', 'festivos.Factories', 
                                     'nsPopover', 'ui.bootstrap.contextMenu','chart.js','angular-timezone-selector', 'datatables.colreorder']);
 
 //se han desconectado esto plugins:  'ngScrollable'
@@ -95,6 +95,16 @@ app.config([
 		$routeProvider.when('/home', {
 			templateUrl : 'app/views/home.html',
 			controller : 'MainController'
+		});
+
+		$routeProvider.when('/pais', {
+			templateUrl : 'app/views/pais.html',
+			controller : 'MainController'
+		});
+
+		$routeProvider.when('/spain', {
+			templateUrl : 'app/views/spain.html',
+			controller : 'SpainController'
 		});
 		
 		$routeProvider.otherwise({ 

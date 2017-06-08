@@ -1,7 +1,7 @@
 <!doctype html>
 <html ng-app=festivos>
 <head>
-<base href="/charlesapp/">
+<base href="/charlesApp/">
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -180,6 +180,13 @@
 <!-- OTHERS -->
 <script src="addins/ie10-viewport-bug-workaround.js"></script><!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="app/controllers/MainController.js"></script>
+<script src="app/controllers/PaisController.js"></script>
+<script src="app/controllers/SpainController.js"></script>
+<script src="app/services/CommonServices.js"></script>
+<script src="app/services/PaisService.js"></script>
+<script src="app/services/SpainService.js"></script>
+<script src="app/services/NotifyService.js"></script>
+<script src="app/factories/TabsFactory.js"></script>
 <script src="app/app.js"></script>
 
 <style>
@@ -241,8 +248,10 @@ header div {
 		<header class="col-lg-12 col-md-12">
 			<div class="row">
 				<div class="btn-group col-lg-10 col-md-10">
-					<button type="button" class="btn btn-primary active"><i class=" fa-2x fa fa-address-book"></i> Países</button>
-					<button type="button" class="btn btn-primary"><img src="assets/img/spain.png" style="max-height:65%"/>España</button>
+					<a href="pais" class="btn btn-primary active"><i class=" fa-2x fa fa-address-book"></i><br><label>Países</label></a>
+					<!--  <button type="button" class="btn btn-primary active" ng-click="openPage('paises')"><i class=" fa-2x fa fa-address-book"></i> Países</button>-->
+					<a href="pais" class="btn btn-primary active"><img src="assets/img/spain.png" style="max-height:65%"/><br><label>España</label></a>
+					<!-- <button type="button" class="btn btn-primary"><img src="assets/img/spain.png" style="max-height:65%"/>España</button>-->
 					<button type="button" class="btn btn-primary">Adminsitración</button>
 				</div>
 				<div class="col-lg-2 col-md-2 text-right">
