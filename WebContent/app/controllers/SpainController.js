@@ -40,7 +40,7 @@ app.directive('wmBlock', function ($parse) {
 
 app.controller( "spainController", 
 
-    function($controller, $timeout, $scope, $rootScope, $location, $sce, $filter, md5, NotifyService, DTOptionsBuilder, DTColumnDefBuilder, adminServices, spainServices) {
+    function($controller, $timeout, $scope, $rootScope, $location, $sce, $filter, md5, NotifyService, DTOptionsBuilder, DTColumnDefBuilder, adminServices, spainServices,tabsFactory) {
 
 	$scope.comboCCAA = [];
 	$scope.comboProvincias = [];

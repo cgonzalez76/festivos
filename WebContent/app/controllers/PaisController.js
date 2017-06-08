@@ -2,7 +2,7 @@ var app = angular.module("festivos.Controllers");
 
 app.controller( "paisController", 
 
-    function($controller, $timeout, $scope, $rootScope, $location, $sce, $filter, md5, NotifyService, DTOptionsBuilder, DTColumnDefBuilder,paisServices) {
+    function($controller, $timeout, $scope, $rootScope, $location, $sce, $filter, md5, NotifyService, DTOptionsBuilder, DTColumnDefBuilder,paisServices,tabsFactory) {
 
 	$scope.comboPaises = [];
 	$scope.paisSeleccionado;
