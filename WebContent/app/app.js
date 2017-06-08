@@ -1,10 +1,10 @@
 var app = angular.module('festivos', [ 'ngRoute', 'ngAnimate', 'ui.bootstrap', 'ngStorage', 'ngSanitize',
                                     'datatables', 'datatables.buttons', 'datatables.scroller', //'datatables.bootstrap', 
-                                    'ngTable', 'ng-sortable', 'ngFileUpload',
+                                    'ngTable', 'ng-sortable', 
                                     'pascalprecht.translate', 'ngMd5','ui.select','ngSanitize',
-                                    'datePicker', 'cgNotify', 'ngScrollable',
+                                    'cgNotify', 'ngScrollable',
                                     'festivos.Controllers','festivos.Services', 'festivos.Factories', 
-                                    'nsPopover', 'ui.bootstrap.contextMenu','chart.js','angular-timezone-selector', 'datatables.colreorder']);
+                                    'nsPopover', 'ui.bootstrap.contextMenu','datatables.colreorder']);
 
 //se han desconectado esto plugins:  'ngScrollable'
 
@@ -61,21 +61,15 @@ app.config([
 	'$routeProvider',
 	'$locationProvider',
 	'$translateProvider',
-    'ChartJsProvider',
     '$compileProvider',
     '$logProvider',
-	function($routeProvider, $locationProvider, $translateProvider, ChartJsProvider, $compileProvider, $logProvider) {
+	function($routeProvider, $locationProvider, $translateProvider,  $compileProvider, $logProvider) {
 
         // disable debug info
         $compileProvider.debugInfoEnabled(false);
         $logProvider.debugEnabled(false);
 
 		//
-	    // Configure all charts
-        ChartJsProvider.setOptions({
-            colours: ['#999c9e', '#2f4050', '#19a0a1', '#94BED9', '#1c84c6', '#d1dade', '#e2f4ff', '#2f4050'],
-            responsive: true
-        });
         // Configure all line charts
         /*ChartJsProvider.setOptions('bar', {
          datasetFill: true
