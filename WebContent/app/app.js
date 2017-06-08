@@ -98,9 +98,8 @@ app.config([
 
 		$routeProvider.when('/spain', {
 			templateUrl : 'app/views/spain.html',
-			controller : 'SpainController'
+			controller : 'MainController'
 		});
-		
 		$routeProvider.otherwise({ 
 			templateUrl : 'app/views/error.html',
 			controller : 'MainController'
