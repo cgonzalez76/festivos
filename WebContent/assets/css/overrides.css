@@ -35,12 +35,14 @@ header div {
 	width:150px;
 	height: 100%;
 	border: 0;
+	background-color: #226A34 ;
+
 }
 .btn span {
 	padding: 7px;
 }
 .btn:hover, .btn-primary:focus {
-	background-color: 005731 !important;
+	background-color: #005731 !important;
 	cursor: pointer !important;
 }
 

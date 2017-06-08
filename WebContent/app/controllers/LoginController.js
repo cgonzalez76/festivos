@@ -17,7 +17,7 @@ app.controller( "LoginController",
                     userFactory.stampLoggedIn ( storageFactory.getLoggedIn() );
 
                     $scope.loading = false;
-                    $location.path("/home");
+                    $location.path("/");
 
                 }else{
                     //Pasó el timeout desde el login
@@ -60,7 +60,7 @@ app.controller( "LoginController",
 								
 
 								$scope.loading = false;
-								$location.path("/home");
+								$location.path("/");
 
 							} else if ( status == 401 ){
 								$scope.error = res.code;

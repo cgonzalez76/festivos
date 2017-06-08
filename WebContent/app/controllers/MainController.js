@@ -3,8 +3,11 @@ var app = angular.module("festivos.Controllers", []);
 app.controller("MainController", 
 
 
-	function ($scope, $rootScope, $q, $location, $filter, userFactory) {
-        $scope.userData = userFactory.userData;
+	function ($scope, $rootScope, $q, $location, $filter, userFactory, storageFactory) {
+		userFactory.userData=storageFactory.getUserData();
+		userFactory.loggedIn=storageFactory.getLoggedIn();
+		$scope.userData = userFactory.userData;
+        $scope.loggedIn = userFactory.loggedIn;
 
     	// ####################################################################################################################################################
     	// ### WATCHERS #######################################################################################################################################
@@ -16,7 +19,7 @@ app.controller("MainController",
     				},
     				function (newValue, oldValue) {
                         //apertura normal tras login
-                        $scope.showtopbar = userFactory.loggedIn;
+                        $scope.loggedIn = userFactory.loggedIn;
     				}
     		);
     		
@@ -26,6 +29,7 @@ app.controller("MainController",
     				},
     				function (newValue, oldValue) {
     					$scope.userData = newValue;	
+    					console.log ($scope.userData.username);
     				}
     		);
     		
