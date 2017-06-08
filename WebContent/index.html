@@ -227,11 +227,15 @@
 <script src="app/controllers/MainController.js"></script>
 <script src="app/controllers/PaisController.js"></script>
 <script src="app/controllers/SpainController.js"></script>
+<script src="app/controllers/LoginController.js"></script>
 <script src="app/services/CommonServices.js"></script>
 <script src="app/services/PaisService.js"></script>
 <script src="app/services/SpainService.js"></script>
+<script src="app/services/AuthServices.js"></script>
 <script src="app/services/NotifyService.js"></script>
 <script src="app/factories/TabsFactory.js"></script>
+<script src="app/factories/StorageFactory.js"></script>
+<script src="app/factories/UserFactory.js"></script>
 <script src="app/app.js"></script>
 <script src="app/chosen_directives.js"></script>
 
@@ -250,7 +254,7 @@
 					<!--  <button type="button" class="btn btn-primary active" ng-click="openPage('paises')"><i class=" fa-2x fa fa-address-book"></i> Países</button>-->
 					<a href="spain" class="btn btn-primary" ng-click="selected=2" ng-class="{active : selected==2}"><img src="assets/img/spain.png" style="max-height:65%"/><br><label>España</label></a>
 					<!-- <button type="button" class="btn btn-primary"><img src="assets/img/spain.png" style="max-height:65%"/>España</button>-->
-					<a href="spain" class="btn btn-primary" ng-click="selected=3" ng-class="{active : selected==3}"><img src="assets/img/admin.png" style="max-height:65%"/><br><label>Administración</label></a>
+					<a href="login" class="btn btn-primary" ng-click="selected=3" ng-class="{active : selected==3}"><img src="assets/img/admin.png" style="max-height:65%"/><br><label>Administración</label></a>
 					<!--<button type="button" class="btn btn-primary">Adminsitración</button>-->
 				</div>
 				<div class="col-lg-2 col-md-2 text-right">

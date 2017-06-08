@@ -1,0 +1,47 @@
+<style>
+.loginContainer {
+    position:absolute;
+    top:50%;
+    left: 50%;
+    margin-top: -150px;
+    margin-left: -150px;
+}
+#page-wrapper {
+    /******  VERY IMPORTANT FOR AVOID SCROLL ON LOGIN VIEW ******
+    #page-wrapper es el contenedor de toda la Web
+    por le han puesto por css que siempre tenga un estilo de alto minimo obligado y un margen fijo a la izquierda para dejar sitio al menu
+    Pero para el caso de la vista de login hay que anular ese alto y ese margen
+    *************************************************************/
+    margin: 0;
+    min-height: auto;
+}
+    /***** tambien es necesario anular el margenm derecho para cuando el menu izquierdo esté replegado *****/
+    body.mini-navbar #page-wrapper {
+        margin: 0;
+    }
+</style>
+<div id="login-container" ng-controller="LoginController" ng-init="init()" ng-cloak>
+	<div class="loginContainer middle-box text-center loginscreen animated fadeInDown ">
+		<div class="login ">
+			<form name="frmLogin" class="form-signin" ng-submit="login(frmLogin.$valid)" novalidate>
+				<div class="form-group">
+					<label>Usuario</label><input type="text" ng-model="username" class="form-control" placeholder="Nombre de usuario" name="txtUser"></input>
+				</div>
+				<div class="form-group">
+					<label>Password</label><input type="password" ng-model="password" class="form-control" placeholder="Password" name="txtPassword"></input>
+				</div>
+				<div class="form-group">
+					<input type="submit" 
+						class="btn btn-lg btn-signin btn-block btn-primary mainColor" value="Iniciar sesión">
+					</input>
+				</div>
+				<div class="form-group">
+					<div class="alert alert-danger" role="alert" ng-show="error != null && error !== undefined">
+						<span class="glyphicon glyphicon-info-sign"></span>
+						<span>{{errorMsg}}</span>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

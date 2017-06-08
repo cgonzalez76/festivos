@@ -90,14 +90,16 @@ app.config([
 			templateUrl : 'app/views/home.html',
 			controller : 'MainController'
 		});
-
 		$routeProvider.when('/pais', {
 			templateUrl : 'app/views/pais.html',
 			controller : 'MainController'
 		});
-
 		$routeProvider.when('/spain', {
 			templateUrl : 'app/views/spain.html',
+			controller : 'MainController'
+		});
+		$routeProvider.when('/login', {
+			templateUrl : 'app/views/login.html',
 			controller : 'MainController'
 		});
 		$routeProvider.otherwise({ 
