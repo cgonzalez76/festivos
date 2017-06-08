@@ -5,7 +5,31 @@ app.controller( "LoginController",
     function($controller, $timeout, $scope, $rootScope, $location, $sce, $filter, md5, NotifyService, DTOptionsBuilder, DTColumnDefBuilder,tabsFactory, userFactory, storageFactory, authServices) {
 
 		$scope.init = function () {
-			$scope.loggedin = false;
+			$scope.loading = true;
+
+			//Comprobar en cada refresco de pagina si se ha superado el timestamp desde que el usuario se logó. EL tiempo de caducidad está definido en storagefactory
+			if ( storageFactory.getLoggedIn() ) {
+
+                if (storageFactory.timeoutLogin() ) {
+                    //Aun está dentro del tiempo  timeout permitido desde el login
+                    // restauramos datos de sesión
+                    userFactory.userData = storageFactory.getUserData();
+                    userFactory.stampLoggedIn ( storageFactory.getLoggedIn() );
+
+                    $scope.loading = false;
+                    $location.path("/home");
+
+                }else{
+                    //Pasó el timeout desde el login
+                    userFactory.loggedIn = false;
+                    $scope.loading = false;
+                    $scope.logout();
+                }
+			}else{
+                userFactory.loggedIn = false;
+                $scope.loading = false;
+
+            }
 	
 		};
 
