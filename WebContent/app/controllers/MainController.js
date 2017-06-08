@@ -4,7 +4,7 @@ app.controller("MainController",
 
 
 	function ($scope, $rootScope, $q, $location, $filter) {
-
+		$scope.selectedButton;
 		$scope._ActionTypes = {
 				TREE:		'tree',
 				LIST:		'list',
@@ -16,6 +16,7 @@ app.controller("MainController",
 		};
 		
 		$scope.openPage=function (pagina) {
+			$scope.selectedButton
 			window.location.href = "/" + pagina;
 		};
 	}

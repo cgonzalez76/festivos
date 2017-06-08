@@ -246,11 +246,11 @@
 					<img src="assets/img/calendario1.png" style="max-height:80%"/>
 				</div>
 				<div class="btn-group col-lg-9 col-md-9">
-					<a href="pais" class="btn btn-primary active"><img src="assets/img/world.png" style="max-height:65%"/><br><label>Países</label></a>
+					<a href="pais" class="btn btn-primary" ng-click="selected=1" ng-class="{active : selected==1}"><img src="assets/img/world.png" style="max-height:65%"/><br><label>Países</label></a>
 					<!--  <button type="button" class="btn btn-primary active" ng-click="openPage('paises')"><i class=" fa-2x fa fa-address-book"></i> Países</button>-->
-					<a href="spain" class="btn btn-primary"><img src="assets/img/spain.png" style="max-height:65%"/><br><label>España</label></a>
+					<a href="spain" class="btn btn-primary" ng-click="selected=2" ng-class="{active : selected==2}"><img src="assets/img/spain.png" style="max-height:65%"/><br><label>España</label></a>
 					<!-- <button type="button" class="btn btn-primary"><img src="assets/img/spain.png" style="max-height:65%"/>España</button>-->
-					<a href="spain" class="btn btn-primary"><img src="assets/img/admin.png" style="max-height:65%"/><br><label>Administración</label></a>
+					<a href="spain" class="btn btn-primary" ng-click="selected=3" ng-class="{active : selected==3}"><img src="assets/img/admin.png" style="max-height:65%"/><br><label>Administración</label></a>
 					<!--<button type="button" class="btn btn-primary">Adminsitración</button>-->
 				</div>
 				<div class="col-lg-2 col-md-2 text-right">
