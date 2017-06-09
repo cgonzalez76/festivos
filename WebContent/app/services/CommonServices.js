@@ -24,7 +24,7 @@ app.service('commonServices',
 				params: params,
 				headers: {
 				    'Content-Type': 'application/json',
-				    'token': userFactory.userData.token,
+				    'token': angular.isObject(userFactory.userData) ? userFactory.userData.token : null,
 //				    'locale': l10nFactory.locale.code
 				}
 			})
@@ -49,7 +49,7 @@ app.service('commonServices',
 			$http.post (url, params, {
 				headers: {
 				    'Content-Type': 'application/json',
-				    'token': userFactory.userData.token,
+				    'token':  angular.isObject(userFactory.userData) ? userFactory.userData.token : null,
 //				    'locale': l10nFactory.locale.code
 				}
 			})
@@ -74,7 +74,7 @@ app.service('commonServices',
 			$http.post (url, formdata, {
 				headers: {
 					'Content-Type': undefined, // obligatorio o no compone bien los boundary
-				    'token': userFactory.userData.token,
+				    'token':  angular.isObject(userFactory.userData) ? userFactory.userData.token : null,
 //				    'locale': l10nFactory.locale.code
 				},
 				params: params
@@ -100,7 +100,7 @@ app.service('commonServices',
 			$http.put (url, params, {
 				headers: {
 				    'Content-Type': 'application/json',
-				    'token': userFactory.userData.token,
+				    'token':  angular.isObject(userFactory.userData) ? userFactory.userData.token : null,
 //				    'locale': l10nFactory.locale.code
 				}
 			})
@@ -129,7 +129,7 @@ app.service('commonServices',
 				params: params,
 				headers: {
 				    'Content-Type': 'application/json',
-				    'token': userFactory.userData.token,
+				    'token':  angular.isObject(userFactory.userData) ? userFactory.userData.token : null,
 //				    'locale': l10nFactory.locale.code
 				}
 			})

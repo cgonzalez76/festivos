@@ -84,7 +84,7 @@ app.controller( "spainController",
     ];
 
 	$scope.initializeSpain = function () {
-		
+
 		spainServices.loadCcaa(function (res, status) {
 
 			if ( status == 200 ) 
@@ -103,6 +103,7 @@ app.controller( "spainController",
 	}
 	
 	$scope.getProvincias = function (ccaa) {
+
 		spainServices.loadProvincias (ccaa, function (res,status) {
 			if ( status == 200 ) 
 				// cargamos datos
@@ -121,7 +122,7 @@ app.controller( "spainController",
 	}
 
 	$scope.getFestivos = function () {
-		
+
 		if (("" + $scope.peticion.cp).length > 0)
 			$scope.peticion.cp = pad ($scope.peticion.cp,5);
 		if ($scope.peticion.ccaa != null)

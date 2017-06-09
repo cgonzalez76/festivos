@@ -60,6 +60,7 @@ app.controller( "paisController",
 	}
 	
 	$scope.getFestivos = function (pais) {
+
 		paisServices.loadFestivos (pais, function (res,status) {
 			if ( status == 200 ) 
 				// cargamos datos
