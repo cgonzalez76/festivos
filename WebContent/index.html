@@ -51,9 +51,7 @@
 <!-- FULL CALENDAR 
 <link  href="addins/fullcalendar-2.9.1/fullcalendar.css" rel="stylesheet">-->
 
-
-
-
+<link href="assets/css/colors.css" rel="stylesheet">
 <link href="assets/css/overrides.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css">
 
@@ -228,10 +226,12 @@
 <script src="app/controllers/PaisController.js"></script>
 <script src="app/controllers/SpainController.js"></script>
 <script src="app/controllers/LoginController.js"></script>
+<script src="app/controllers/LogController.js"></script>
 <script src="app/services/CommonServices.js"></script>
 <script src="app/services/PaisService.js"></script>
 <script src="app/services/SpainService.js"></script>
 <script src="app/services/AuthServices.js"></script>
+<script src="app/services/LogServices.js"></script>
 <script src="app/services/NotifyService.js"></script>
 <script src="app/factories/TabsFactory.js"></script>
 <script src="app/factories/StorageFactory.js"></script>
@@ -244,27 +244,26 @@
 <body>
 <div ng-controller="MainController" class="container-fluid" id="main-view">
 	<div class="row">
-		<header class="col-lg-12 col-md-12">
+		<header class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<div class="row">
-				<div class="col-lg-1 col-md-1" id="logo">
+				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" id="logo">
 					<img src="assets/img/calendario1.png" style="max-height:80%"/>
 				</div>
-				<div class="btn-group col-lg-9 col-md-9">
-					<a href="pais" class="btn btn-primary" ng-click="selected=1" ng-class="{active : selected==1}"><img src="assets/img/world.png" style="max-height:65%"/><br><label>Países</label></a>
-					<!--  <button type="button" class="btn btn-primary active" ng-click="openPage('paises')"><i class=" fa-2x fa fa-address-book"></i> Países</button>-->
-					<a href="spain" class="btn btn-primary" ng-click="selected=2" ng-class="{active : selected==2}"><img src="assets/img/spain.png" style="max-height:65%"/><br><label>España</label></a>
-					<!-- <button type="button" class="btn btn-primary"><img src="assets/img/spain.png" style="max-height:65%"/>España</button>-->
-					<a href="login" class="btn btn-primary" ng-click="selected=3" ng-class="{active : selected==3}"><img src="assets/img/admin.png" style="max-height:65%"/><br><label>Administración</label></a>
-					<!--<button type="button" class="btn btn-primary">Adminsitración</button>-->
+				<div class="btn-group col-lg-8 col-md-8 col-sm-8 col-xs-8">
+						<a href="pais" class="btn btn-primary" ng-click="selected=1" ng-class="{active : selected==1}"><img src="assets/img/world.png" style="max-height:65%"/><br><label>Países</label></a>
+						<a href="spain" class="btn btn-primary" ng-click="selected=2" ng-class="{active : selected==2}"><img src="assets/img/spain.png" style="max-height:65%"/><br><label>España</label></a>
+						<a href="login" class="btn btn-primary" ng-show="!loggedIn"ng-click="selected=3" ng-class="{active : selected==3}"><img src="assets/img/admin.png" style="max-height:65%"/><br><label>Administración</label></a>
+						<a href="log" class="btn btn-primary" ng-show="loggedIn" ng-click="selected=4" ng-class="{active : selected==4}"><i class="glyphicon glyphicon-list-alt"></i><br><label>Log</label></a>
 				</div>
-				<div class="col-lg-2 col-md-2 text-right" ng-show="loggedIn">
-					<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-user"></span>{{userData.username}}</button>
+				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-right" ng-show="loggedIn">
+					<a href="#" class="btn btn-primary"><i class="glyphicon glyphicon-user"></i><br><label>{{userData.username}}</label>
+				    <a href="#" ng-controller="LoginController" ng-click="logout()" class="btn btn-primary"><i class="glyphicon glyphicon-off"></i><br><label>Logout</label></a>
 				</div>
 			</div>
 		</header>
 	</div>
 	<div class="row" id="mainview">
-		<section class="col-lg-12"><!--SECTION-->
+		<section class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><!--SECTION-->
 			<div id="ngview" data-ng-view> </div>
 		</section>
 		<!-- FIN SECTION--> 
@@ -275,5 +274,7 @@
 		<!-- FIN FOOTER--> 
 	</div>
 </div>
+
+
 </body>
 </html>

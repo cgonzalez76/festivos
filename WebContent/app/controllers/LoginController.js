@@ -9,7 +9,6 @@ app.controller( "LoginController",
 
 			//Comprobar en cada refresco de pagina si se ha superado el timestamp desde que el usuario se logó. EL tiempo de caducidad está definido en storagefactory
 			if ( storageFactory.getLoggedIn() ) {
-
                 if (storageFactory.timeoutLogin() ) {
                     //Aun está dentro del tiempo  timeout permitido desde el login
                     // restauramos datos de sesión
@@ -26,7 +25,9 @@ app.controller( "LoginController",
                     $scope.logout();
                 }
 			}else{
-                userFactory.loggedIn = false;
+                userFactory.userData = {};
+                userFactory.userData.token = null;
+				userFactory.loggedIn = false;
                 $scope.loading = false;
 
             }
@@ -36,6 +37,8 @@ app.controller( "LoginController",
 		$scope.login = function (valid) {
 
 			if (valid) {
+				userFactory.userData = {};
+				userFactory.userData.token = null;
 
 			  $scope.loading = true;
 

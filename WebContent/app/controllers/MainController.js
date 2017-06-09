@@ -4,10 +4,11 @@ app.controller("MainController",
 
 
 	function ($scope, $rootScope, $q, $location, $filter, userFactory, storageFactory) {
-		userFactory.userData=storageFactory.getUserData();
-		userFactory.loggedIn=storageFactory.getLoggedIn();
-		$scope.userData = userFactory.userData;
-        $scope.loggedIn = userFactory.loggedIn;
+	
+		$scope.userData = {};
+		$scope.userData.token = null;
+		userFactory.userData = {};
+		userFactory.userData.token = null;
 
     	// ####################################################################################################################################################
     	// ### WATCHERS #######################################################################################################################################
@@ -20,6 +21,7 @@ app.controller("MainController",
     				function (newValue, oldValue) {
                         //apertura normal tras login
                         $scope.loggedIn = userFactory.loggedIn;
+                		userFactory.loggedIn=storageFactory.getLoggedIn();
     				}
     		);
     		
@@ -29,7 +31,7 @@ app.controller("MainController",
     				},
     				function (newValue, oldValue) {
     					$scope.userData = newValue;	
-    					console.log ($scope.userData.username);
+                		userFactory.userData=storageFactory.getUserData();
     				}
     		);
     		

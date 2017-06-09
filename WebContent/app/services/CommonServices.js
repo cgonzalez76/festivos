@@ -4,7 +4,7 @@ var app = angular.module('festivos.Services', ['ngCookies']);
 app.value('ENDPOINT', 'http://localhost:8080/festivos/ws');
 
 app.service('commonServices',
-    function(ENDPOINT, $http) {
+    function(ENDPOINT, $http, userFactory) {
 
 		//
 		this.getEndpointURL = function() {
@@ -24,6 +24,7 @@ app.service('commonServices',
 				params: params,
 				headers: {
 				    'Content-Type': 'application/json',
+				    'token': userFactory.userData.token,
 //				    'locale': l10nFactory.locale.code
 				}
 			})
@@ -48,6 +49,7 @@ app.service('commonServices',
 			$http.post (url, params, {
 				headers: {
 				    'Content-Type': 'application/json',
+				    'token': userFactory.userData.token,
 //				    'locale': l10nFactory.locale.code
 				}
 			})
@@ -72,6 +74,7 @@ app.service('commonServices',
 			$http.post (url, formdata, {
 				headers: {
 					'Content-Type': undefined, // obligatorio o no compone bien los boundary
+				    'token': userFactory.userData.token,
 //				    'locale': l10nFactory.locale.code
 				},
 				params: params
@@ -97,6 +100,7 @@ app.service('commonServices',
 			$http.put (url, params, {
 				headers: {
 				    'Content-Type': 'application/json',
+				    'token': userFactory.userData.token,
 //				    'locale': l10nFactory.locale.code
 				}
 			})
@@ -125,6 +129,7 @@ app.service('commonServices',
 				params: params,
 				headers: {
 				    'Content-Type': 'application/json',
+				    'token': userFactory.userData.token,
 //				    'locale': l10nFactory.locale.code
 				}
 			})

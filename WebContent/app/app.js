@@ -102,6 +102,10 @@ app.config([
 			templateUrl : 'app/views/login.html',
 			controller : 'MainController'
 		});
+		$routeProvider.when('/log', {
+			templateUrl : 'app/views/log.html',
+			controller : 'MainController'
+		});
 		$routeProvider.otherwise({ 
 			templateUrl : 'app/views/error.html',
 			controller : 'MainController'

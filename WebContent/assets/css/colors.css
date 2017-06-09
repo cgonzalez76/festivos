@@ -1,0 +1,13 @@
+/* ***************************************************************************
+	BIG COLORS
+  *************************************************************************** */
+
+:root{
+    --ui-main-color: #557EFF;
+    --ui-second-color: #42D9FF;
+    --ui-third-color: #42C1FF;    
+}
+.FestMainColor, .festmaincolor { color: rgba(105, 150, 27, 1); color: var(--ui-main-color); }
+.FestSecondColor, .festsecondcolor { color: #335a0c; color: var(--ui-second-color); }
+
+
