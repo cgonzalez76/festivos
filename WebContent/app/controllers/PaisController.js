@@ -41,8 +41,11 @@ app.controller( "paisController",
     ];
 
 	$scope.initializePais = function () {
+		$scope._spinner.onSpinner = true;
+		$scope._spinner.message = $filter('translate')('users.updateWait');
 
 		paisServices.loadPaises(function (res, status) {
+			$scope._spinner.onSpinner = false;
 
 			if ( status == 200 ) 
 				// cargamos datos

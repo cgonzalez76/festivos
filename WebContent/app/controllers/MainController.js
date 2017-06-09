@@ -9,6 +9,12 @@ app.controller("MainController",
 		$scope.userData.token = null;
 		userFactory.userData = {};
 		userFactory.userData.token = null;
+		
+		$scope._spinner = {
+				onSpinner: false,
+				message: $filter('translate')('general.wait')
+			};
+
 
     	// ####################################################################################################################################################
     	// ### WATCHERS #######################################################################################################################################
