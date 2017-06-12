@@ -67,6 +67,10 @@ app.controller( "spainController",
 			tipo:null
 			}];
 	
+	$scope.monthpicker =  {
+        	dt: null
+        }
+
     $scope.dtOptions = DTOptionsBuilder.newOptions()
     .withOption("aaSorting", [])
     .withOption('responsive', true)
@@ -83,10 +87,16 @@ app.controller( "spainController",
                           .withOption('type', 'date')
     ];
 
+	$scope.spainEvents=[];
+	$scope.currentRecord={};
+
 	$scope.initializeSpain = function () {
+		$scope._spinner.onSpinner = true;
+		$scope._spinner.message = "Recuperando lista de Comunidades. Espere, por favor";
 
 		spainServices.loadCcaa(function (res, status) {
-
+			$scope._spinner.onSpinner = false;
+			
 			if ( status == 200 ) 
 				// cargamos datos
 				$scope.comboCCAA = res;
@@ -95,16 +105,21 @@ app.controller( "spainController",
 				$scope.comboCCAA = [];
 
 			else {
-				var msg = res && res.message ? res.message : $filter('translate')('general.errorLoadingData');
+				var msg = res && res.message ? res.message : "Error recuperando datos";
 				NotifyService.several ( msg, tabsFactory.maintab );
 			}
 
 		});
+        fullCalendarInitialize();
+
 	}
 	
 	$scope.getProvincias = function (ccaa) {
+		$scope._spinner.onSpinner = true;
+		$scope._spinner.message = "Recuperando lista de Provincias. Espere, por favor";
 
 		spainServices.loadProvincias (ccaa, function (res,status) {
+			$scope._spinner.onSpinner = false;
 			if ( status == 200 ) 
 				// cargamos datos
 				$scope.comboProvincias = res;
@@ -113,7 +128,7 @@ app.controller( "spainController",
 				$scope.comboProvincias = [];
 
 			else {
-				var msg = res && res.message ? res.message : $filter('translate')('general.errorLoadingData');
+				var msg = res && res.message ? res.message : "Error recuperando datos";
 				NotifyService.several ( msg, tabsFactory.maintab );
 			}
 
@@ -129,17 +144,38 @@ app.controller( "spainController",
 				$scope.peticion.ccaa = $scope.peticion.ccaa.ccaa;
 		if ($scope.peticion.provincia != null)
 			$scope.peticion.provincia = $scope.peticion.provincia.provincia
+
+		$scope._spinner.onSpinner = true;
+		$scope._spinner.message = "Recuperando festivos. Espere, por favor";
+
 		spainServices.loadFestivos ($scope.peticion, function (res,status) {
-			if ( status == 200 ) 
-				// cargamos datos
-				$scope.respuesta = res;
+			$scope._spinner.onSpinner = false;
+			
+			if ( status == 200 ) {
+				$scope.spainEvents=[];
+				
 
-			else if ( status == 204 )
+					for (var x=0; x < res.listafestivos.length; x++) {
+						var momento = moment(res.listafestivos[x].fecha,'DD/MM/YYYY');
+						res.listafestivos[x].moment = momento;
+						res.listafestivos[x].idcalendar = x;
+						$scope.spainEvents=$scope.spainEvents.concat ({"start":momento, "title": res.listafestivos[x].tipo + "\r\n" + res.listafestivos[x].nombre, "color":"#f00", allDay:true, id:x});
+					}
+
+	     		$timeout (function () {
+					$('#calendarspain').fullCalendar( 'removeEventSources'  )
+					$('#calendarspain').fullCalendar( 'addEventSource', $scope.spainEvents  )
+					console.log ($scope.spainEvents.length);
+	
+					$scope.respuesta = res;
+	         	}, 0);
+
+			}else if ( status == 204 ){
 				$scope.respuesta = [];
 
-			else {
+			}else {
 				$scope.respuesta = [];
-				var msg = res && res.message ? res.message : $filter('translate')('general.errorLoadingData');
+				var msg = res && res.message ? res.message : "Error recuperando datos";
 				
 				NotifyService.several ( msg, tabsFactory.maintab );
 			}
@@ -159,13 +195,16 @@ app.controller( "spainController",
 							$scope.festivoHoy.texto += " en " + $scope.festivoHoy.provincia;
 						}
 							
+					} else {
+						$scope.festivoHoy.texto = "Hoy no es festivo en dicha localidad ";
+						
 					};
 		
 				}else if ( status == 204 ){
 					$scope.festivoHoy = [];
 	
 				}else {
-					var msg = res && res.message ? res.message : $filter('translate')('general.errorLoadingData');
+					var msg = res && res.message ? res.message : "Error recuperando datos";
 					NotifyService.several ( msg, tabsFactory.maintab );
 				}
 			});
@@ -177,6 +216,75 @@ app.controller( "spainController",
         dateOut.setMonth(dateOut.getMonth() - 1);
         return dateOut;
     };
+
+	/*
+	 * fullCalendarIntialize
+	 */
+	var fullCalendarInitialize = function () {
+
+		// prepare calendar
+		$('#calendarspain').fullCalendar( 'destroy'); //removeEvents
+		$('#calendarspain').fullCalendar({
+			theme: true,
+/*			customButtons: {
+				select_month: {
+		            text: 'Selecciona un mes',
+		            click: function() {
+
+		            	var btn = $('button[class~=fc-select_month-button]');
+			            	$('#monthPickerContainer').offset ({
+			            		left: btn.offset().left - 50,
+			            		top: btn.offset().top - 25
+			            	});
+
+			            	$('#dtmonthpicker2').select();
+		                   
+		            }
+		        }
+		    },*/
+
+			header: {
+				left: 'title',
+				right: 'select_month prev,next'
+			},
+			lang: 'es',
+			aspectRatio: 2,
+			firstDay: 1,
+			editable: false,
+ 			events: $scope.spainEvents,
+ 			eventLimit: 3,
+ 			defaultView: 'month',
+			selectable: true,
+			eventClick: function( event, jsEvent, view ) {
+				$scope.currentRecord={};
+				for (i=0;i<$scope.respuesta.listafestivos.length;i++){
+					if ($scope.respuesta.listafestivos[i].idcalendar == event.id){
+			         	$timeout (function () {
+							$scope.currentRecord = $scope.respuesta.listafestivos[i];
+			         	}, 0);
+						break;
+					}
+				}
+
+				console.log ($scope.currentRecord);
+				$('#festivoModal').modal('show');
+
+ 			},
+ 			
+
+			viewRender: function( view, element ) {
+				//
+				$scope.monthpicker.dt = $('#calendarspain').fullCalendar('getDate').toDate();
+			},
+			
+			selectAllow: function( selectInfo ) {
+				console.log (selectInfo );
+				return false;
+			}
+
+		});
+
+	}
 
     function pad (n, length) {
         if (n != null ){
