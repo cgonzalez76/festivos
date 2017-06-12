@@ -61,7 +61,7 @@
  
  		            <input type="text" ng-readonly="true" ng-model="festivoHoy.texto" class="form-control"  >
 
-					<div id='calendarspain' style="margin:10px auto; width:70%;" ng-show= "respuesta.festivos > 0" />
+					<div id='calendarspain' style="margin:10px auto; width:70%;" ng-show= "respuesta.festivos > 0 && renderCal()" />
 
 
 					<div class="ibox-content" ng-if="respuesta.festivos > 0 && false">

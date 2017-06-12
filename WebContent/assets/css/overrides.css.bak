@@ -1,0 +1,84 @@
+header {
+	background-color: var(--ui-main-color);
+	border-top: solid 2px #005731;
+	border-bottom: solid 2px #AEC0AE;
+	height: 10vh;
+}
+section {
+	height: 83vh;
+}
+
+#mainview{
+	padding:1vh 3px;
+	background-color: var(--ui-second-color);	
+}
+
+#ngview{
+	/*background-image: url('../img/site_background.png');
+    background-repeat: repeat;*/
+	background-color: var(--ui-second-color);
+	height:100%;
+	max-height:100%;
+	border-radius:30px;
+	padding:30px;
+	overflow-y: auto;
+	border: solid 2px #AEC0AE;
+}
+footer {
+	background-color: var(--ui-main-color) ;
+	border-top: solid 2px #AEC0AE;
+	border-bottom: solid 2px #005731;
+	height: 5vh;
+	color:#FFF;
+	padding:1vh 1%;
+}
+
+#ngview::-webkit-scrollbar {
+    width: 25px;
+}
+
+#ngview::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 30px;
+     border-top-left-radius: 0;
+     border-bottom-left-radius: 0;
+    
+}
+
+#ngview::-webkit-scrollbar-thumb {
+    border-radius: 30px;
+    border-radius: 30px;
+    border-top-left-radius: 0;
+     border-bottom-left-radius: 0;    
+     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+header div {
+	height: 100%;
+}
+.btn, .btn-primary {
+	width:150px;
+	height: 100%;
+	border: 0;
+	background-color: var(--ui-main-color) !important;
+
+}
+.btn span {
+	padding: 7px;
+}
+.btn:hover, .btn-primary:focus {
+	background-color: var(--ui-button-active-color) !important;
+	cursor: pointer !important;
+}
+.btn:active, .btn-primary:active {
+	background-color: var(--ui-button-active-color) !important;
+	cursor: pointer !important;
+}
+
+.glyphicon {
+    font-size: 30px;
+}
+
+.ibox-content {
+	 background-color: #fff
+ /*   background-color: var(--ui-second-color);*/
+}

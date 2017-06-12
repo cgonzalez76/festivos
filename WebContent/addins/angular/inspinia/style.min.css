@@ -609,10 +609,15 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
 }
 
 .navbar-toggle {
-    background-color: #1ab394;
+    background-color: #102238;
+	background-image:url(../../../assets/img/toggle_menu.png);
+	background-size:cover;
+	background-position:1px;
+	border:1px solid #FFF;
     color: #fff;
-    padding: 6px 12px;
-    font-size: 14px
+	border-radius:10px;
+	top:2px;
+	
 }
 
 .top-navigation .navbar-nav .open .dropdown-menu > li > a, .top-navigation .navbar-nav .open .dropdown-menu .dropdown-header {
@@ -3651,13 +3656,14 @@ ul.unstyled, ol.unstyled {
 }
 
 .footer {
-    background: none repeat scroll 0 0 white;
-    border-top: 1px solid #e7eaec;
-    bottom: 0;
-    left: 0;
-    padding: 10px 20px;
-    position: absolute;
-    right: 0
+	background: none repeat scroll 0 0 white;
+	border-top: 1px solid #e7eaec;
+	bottom: 0;
+	left: 0;
+	padding: 10px 20px;
+	position: absolute;
+	right: 0;
+	height: 12px;
 }
 
 .footer.fixed_full {
@@ -8810,9 +8816,9 @@ body.md-skin {
 
 @media (max-width: 768px) {
     #page-wrapper {
-        position: inherit;
-        margin: 0;
-        min-height: 1000px
+	position: fixed;
+	margin: 0;
+	min-height: 1000px
     }
 	/* ajustes 2016 anchos moviles extender ancho pie y ocultar barra menu izq */
 	.footer.fixed {

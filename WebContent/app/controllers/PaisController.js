@@ -73,7 +73,7 @@ app.controller( "paisController",
 	}
 	
 	$scope.getFestivos = function (pais) {
-		$scope.contactEvents = [];
+//		$scope.contactEvents = [];
 		$scope._spinner.onSpinner = true;
 		$scope._spinner.message = "Recuperando festivos. Espere, por favor";
 
@@ -86,12 +86,15 @@ app.controller( "paisController",
 					res.listafestivos[x].idcalendar = x;
 					$scope.contactEvents=$scope.contactEvents.concat ({"start":momento, "title": res.listafestivos[x].tipo + "\r\n" + res.listafestivos[x].nombre, "color":"#f00", allDay:true, id:x});
 				}
-
-				$('#calendar').fullCalendar( 'removeEventSources'  )
-				$('#calendar').fullCalendar( 'addEventSource', $scope.contactEvents  )
 				$scope.respuesta = res;
-				console.log (res);
 
+	         	$timeout (function () {
+					console.log (res);
+					$('#calendar').fullCalendar( 'removeEventSources'  )
+					$('#calendar').fullCalendar( 'addEventSource', $scope.contactEvents  )
+	         	}, 0);
+
+				
 			} else if ( status == 204 ) {
 				$scope.respuesta = [];
 

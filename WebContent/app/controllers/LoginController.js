@@ -44,10 +44,13 @@ app.controller( "LoginController",
 
               $scope.passwordMD5  = $scope.password && $scope.password.length > 0 ? md5.createHash ($scope.password) : $scope.password;
 
+              $scope._spinner.onSpinner = true;
+              $scope._spinner.message = "Iniciando sesión. Espere, por favor";
 			  authServices.login ($scope.username, $scope.passwordMD5, 
 
 						function(res, status) {
-
+	              			$scope._spinner.onSpinner = false;
+				  
 							if (status == 200 && !angular.isUndefinedOrNull(res) ) {
 								userFactory.userData = res;
 								userFactory.stampLoggedIn (true)
@@ -88,9 +91,13 @@ app.controller( "LoginController",
 
 		//
 		$scope.logout = function () {
+            $scope._spinner.onSpinner = true;
+            $scope._spinner.message = "Cerrando sesión. Espere, por favor";
 
 			authServices.logout(userFactory.userData.username,  function(){
-	    		$location.path("/");
+	              $scope._spinner.onSpinner = true;
+
+				$location.path("/");
 	    	});
 	    	
 	    	//

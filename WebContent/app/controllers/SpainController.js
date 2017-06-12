@@ -153,22 +153,23 @@ app.controller( "spainController",
 			
 			if ( status == 200 ) {
 				$scope.spainEvents=[];
-				
+			
 
-					for (var x=0; x < res.listafestivos.length; x++) {
-						var momento = moment(res.listafestivos[x].fecha,'DD/MM/YYYY');
-						res.listafestivos[x].moment = momento;
-						res.listafestivos[x].idcalendar = x;
-						$scope.spainEvents=$scope.spainEvents.concat ({"start":momento, "title": res.listafestivos[x].tipo + "\r\n" + res.listafestivos[x].nombre, "color":"#f00", allDay:true, id:x});
-					}
+				for (var x=0; x < res.listafestivos.length; x++) {
+					var momento = moment(res.listafestivos[x].fecha,'DD/MM/YYYY');
+					res.listafestivos[x].moment = momento;
+					res.listafestivos[x].idcalendar = x;
+					$scope.spainEvents=$scope.spainEvents.concat ({"start":momento, "title": res.listafestivos[x].tipo + "\r\n" + res.listafestivos[x].nombre, "color":"#f00", allDay:true, id:x});
+				}
+				$scope.respuesta = res;
 
 	     		$timeout (function () {
-					$('#calendarspain').fullCalendar( 'removeEventSources'  )
-					$('#calendarspain').fullCalendar( 'addEventSource', $scope.spainEvents  )
 					console.log ($scope.spainEvents.length);
+					$('#calendarspain').fullCalendar( 'removeEventSources'  );
+					$('#calendarspain').fullCalendar( 'addEventSource', $scope.spainEvents  );
+					$('#calendarspain').fullCalendar('render');
 	
-					$scope.respuesta = res;
-	         	}, 0);
+	         	}, 100);
 
 			}else if ( status == 204 ){
 				$scope.respuesta = [];
@@ -210,6 +211,12 @@ app.controller( "spainController",
 			});
 	}
 	
+	$scope.renderCal = function () {
+		$('#calendarspain').fullCalendar( 'removeEventSources'  );
+		$('#calendarspain').fullCalendar( 'addEventSource', $scope.spainEvents  );
+		$('#calendarspain').fullCalendar('render');
+		return true;
+	};
     $scope.formatDate = function (date) {
     	var dateSplit = date.split("-");
     	var dateOut = new Date(dateSplit[2], dateSplit[1], dateSplit[0]);
