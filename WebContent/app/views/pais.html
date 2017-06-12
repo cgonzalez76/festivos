@@ -69,9 +69,9 @@
 
 
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">{{'general.close' | translate}}</span></button>
-                    <i class="fa fa-clock-o modal-icon"></i>
-                    <label class="modal-title">{{ currentRecord.fecha }}</label>
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+                 <!--  <i class="fa-2x fa fa-eye modal-icon"></i>-->
+                   <label class="modal-title">{{respuesta.pais}} - {{ currentRecord.fecha }}</label>
                 </div>
 
                 <div class="modal-body">
@@ -84,7 +84,7 @@
                         <input type="text" ng-model="currentRecord.tipo" class="form-control" ng-readonly="true"  />
 
                         <a  popover-trigger="mouseenter"   popover="Observaciones"  popover-placement="right"><i class="mdi  mdi-help-circle itemhelp-report"></i></a><label>Observaciones</label>
-                        <input type="text" ng-model="currentRecord.observaciones" class="form-control" ng-readonly="true"  />
+                        <input type="text" ng-model="currentRecord.observaciones != 'null'?currentRecord.observaciones:''" class="form-control" ng-readonly="true"  />
  
                     </div>
                 </div>
