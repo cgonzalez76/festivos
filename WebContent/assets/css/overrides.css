@@ -177,8 +177,9 @@ footer a:hover{
 }
 
 
-
-
+.hidden-lg {
+  display:none !important;
+}
 
 
 .ibox-content {

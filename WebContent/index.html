@@ -255,47 +255,17 @@
 
 <body>
 <div ng-controller="MainController" class="container-fluid" id="main-view">
-	<div class="row">
-		<header id="main-nav" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			<nav class="navbar">
-				<div class="container-fluid">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-						<a class="navbar-brand" href="#" data-toggle="collapse" data-target="#myNavbar"><img src="assets/img/calendario1.png" alt="Festivos-Master" style="max-height:50px"/></a> </div>
-					<div class="collapse navbar-collapse" id="myNavbar">
-						<ul class="nav navbar-nav">
-							<li id="world"><a href="pais" ng-click="selected=1" ng-class="{active : selected==1}"><img src="assets/img/world.png"/><br>
-								<label>Países</label>
-								</a></li>
-							<li id="spain"><a href="spain" ng-click="selected=2" ng-class="{active : selected==2}"><img src="assets/img/spain.png"/><br>
-								<label>España</label>
-								</a></li>
-							<li id="admin"><a href="login" ng-show="!loggedIn"ng-click="selected=3" ng-class="{active : selected==3}"><img src="assets/img/admin.png"/><br>
-								<label>Administración</label>
-								</a></li>
-							<li id="log"><a href="log" ng-show="loggedIn" ng-click="selected=4" ng-class="{active : selected==4}"><i class="glyphicon glyphicon-list-alt"></i><br>
-								<label>Log</label>
-								</a></li>
-						</ul>
-						<ul class="nav navbar-nav navbar-right" ng-show="loggedIn">
-							<li id="user"><a href="#"><i class="glyphicon glyphicon-user"></i><br>
-								<label>{{userData.username}}</label>
-								</a></li>
-							<li id="logout"><a href="#" ng-controller="LoginController" ng-click="logout()"><i class="glyphicon glyphicon-off"></i><br>
-								<label>Logout</label>
-								</a></li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-		</header>
-	</div>
-	  <div class="row" id="mainview">
-		<section class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><!--SECTION-->
-			<div id="ngview" data-ng-view> </div>
-		</section>
-		<!-- FIN SECTION--> 
-	</div>
+	<!--<div id="sidebar-basic-container" data-ng-include src="'app/views/sidebar.html'"></div>-->
+
+	<div id="topbar-basic-container" ng-include src="'app/views/topbar.html'"></div>
+
+	  	<div class="row" id="mainview">
+			<section class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><!--SECTION-->
+				<div id="ngview" data-ng-view> </div>
+			</section>
+			<!-- FIN SECTION--> 
+		</div>
+	
 	<div class="row" )> 
 		<!--FOOTER-->
 		<footer class="col-lg-12"> <small><a href="mailto:exbofh@gmail.com">Contactar</a></small> </footer>

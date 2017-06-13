@@ -1,0 +1,24 @@
+	<div class="row" >
+		<header id="main-nav" class="col-xs-1" style="position: absolute; z-index: 1000; margin-top: 10px; left:50px; top:50px;">
+			<nav class="navbar">
+				<div class="container-fluid">
+					<div class="collapse navbar-collapse" id="myNavbar">
+						<ul class="nav navbar-nav">
+							<li id="world"><a href="pais" ng-click="selected=1" ng-class="{active : selected==1}"><img src="assets/img/world.png"/><br>
+								<label>Países</label>
+								</a></li>
+							<li id="spain"><a href="spain" ng-click="selected=2" ng-class="{active : selected==2}"><img src="assets/img/spain.png"/><br>
+								<label>España</label>
+								</a></li>
+							<li id="admin"><a href="login" ng-show="!loggedIn"ng-click="selected=3" ng-class="{active : selected==3}"><img src="assets/img/admin.png"/><br>
+								<label>Administración</label>
+								</a></li>
+							<li id="log"><a href="log" ng-show="loggedIn" ng-click="selected=4" ng-class="{active : selected==4}"><i class="glyphicon glyphicon-list-alt"></i><br>
+								<label>Log</label>
+								</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
+	</div>
