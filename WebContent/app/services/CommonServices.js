@@ -4,7 +4,7 @@ var app = angular.module('festivos.Services', ['ngCookies']);
 app.value('ENDPOINT', 'http://localhost:8080/festivos/ws');
 
 app.service('commonServices',
-    function(ENDPOINT, $http, userFactory) {
+    function(ENDPOINT, $http, userFactory, storageFactory) {
 
 		//
 		this.getEndpointURL = function() {
@@ -17,14 +17,14 @@ app.service('commonServices',
 
 			// componemos url del servicio
 			var url = this.getEndpointURL() + service;
-
+			var userdata = storageFactory.getUserData();
 
 			// ejecutando llamada
 			$http.get (url, {
 				params: params,
 				headers: {
 				    'Content-Type': 'application/json',
-				    'token': angular.isObject(userFactory.userData) ? userFactory.userData.token : null,
+				    'token': angular.isObject(userdata) ? userdata.token : null,
 //				    'locale': l10nFactory.locale.code
 				}
 			})
@@ -43,13 +43,14 @@ app.service('commonServices',
 
 			// componemos url del servicio
 			var url = this.getEndpointURL() + service;
+			var userdata = storageFactory.getUserData();
 			
 
 			// ejecutando llamada
 			$http.post (url, params, {
 				headers: {
 				    'Content-Type': 'application/json',
-				    'token':  angular.isObject(userFactory.userData) ? userFactory.userData.token : null,
+				    'token':  angular.isObject(userdata) ? userdata.token : null,
 //				    'locale': l10nFactory.locale.code
 				}
 			})
@@ -68,13 +69,14 @@ app.service('commonServices',
 
 			// componemos url del servicio
 			var url = this.getEndpointURL() + service;
+			var userdata = storageFactory.getUserData();
 
 
 			// ejecutando llamada
 			$http.post (url, formdata, {
 				headers: {
 					'Content-Type': undefined, // obligatorio o no compone bien los boundary
-				    'token':  angular.isObject(userFactory.userData) ? userFactory.userData.token : null,
+				    'token':  angular.isObject(userdata) ? userdata.token : null,
 //				    'locale': l10nFactory.locale.code
 				},
 				params: params
@@ -94,13 +96,14 @@ app.service('commonServices',
 
 			// componemos url del servicio
 			var url = this.getEndpointURL() + service;
+			var userdata = storageFactory.getUserData();
 
 
 			// ejecutando llamada
 			$http.put (url, params, {
 				headers: {
 				    'Content-Type': 'application/json',
-				    'token':  angular.isObject(userFactory.userData) ? userFactory.userData.token : null,
+				    'token':  angular.isObject(userdata) ? userdata.token : null,
 //				    'locale': l10nFactory.locale.code
 				}
 			})
@@ -120,6 +123,7 @@ app.service('commonServices',
 
 			// componemos url del servicio
 			var url = this.getEndpointURL() + service;
+			var userdata = storageFactory.getUserData();
 
 			
 			// ejecutando llamada
@@ -129,7 +133,7 @@ app.service('commonServices',
 				params: params,
 				headers: {
 				    'Content-Type': 'application/json',
-				    'token':  angular.isObject(userFactory.userData) ? userFactory.userData.token : null,
+				    'token':  angular.isObject(userdata) ? userdata.token : null,
 //				    'locale': l10nFactory.locale.code
 				}
 			})

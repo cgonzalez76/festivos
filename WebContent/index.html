@@ -255,17 +255,18 @@
 
 <body>
 <div ng-controller="MainController" class="container-fluid" id="main-view">
-	<!--<div id="sidebar-basic-container" data-ng-include src="'app/views/sidebar.html'"></div>-->
 
-	<div id="topbar-basic-container" ng-include src="'app/views/topbar.html'"></div>
-
+		<div id="topbar-basic-container" ng-include src="'app/views/topbar.html'"></div>
+	
 	  	<div class="row" id="mainview">
-			<section class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><!--SECTION-->
+			<section  class="col-xs-2 hidden-lg hidden-md hidden-sm visible-xs">
+				<div id="sidebar-basic-container" data-ng-include src="'app/views/sidebar.html'"></div>
+			</section>
+			<section class="col-lg-12 col-md-12 col-sm-12 col-xs-10"><!--SECTION-->
 				<div id="ngview" data-ng-view> </div>
 			</section>
 			<!-- FIN SECTION--> 
 		</div>
-	
 	<div class="row" )> 
 		<!--FOOTER-->
 		<footer class="col-lg-12"> <small><a href="mailto:exbofh@gmail.com">Contactar</a></small> </footer>
